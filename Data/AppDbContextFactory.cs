@@ -9,7 +9,7 @@ namespace StudentCrudApi.Data
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             
-            // IMPORTANT: Replace with your actual MySQL password
+    
             var connectionString = "server=localhost;port=3306;database=studentdb;user=root;password=root";
             
             optionsBuilder.UseMySql(
