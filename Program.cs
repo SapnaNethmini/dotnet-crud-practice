@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// builder.Services.AddEndpointsApiExplorer();
+// builder.Services.AddSwaggerGen();
 
 // Configure MySQL Database
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -27,16 +27,23 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// // Configure the HTTP request pipeline
+// if (app.Environment.IsDevelopment())
+// {
+//     app.UseSwagger();
+//     app.UseSwaggerUI();
+// }
 
 app.UseHttpsRedirection();
 app.UseCors("AllowReactApp");
 app.UseAuthorization();
 app.MapControllers();
+
+Console.WriteLine("✅ API is running!");
+Console.WriteLine("   GET    http://localhost:5001/api/students");
+Console.WriteLine("   POST   http://localhost:5001/api/students");
+Console.WriteLine("   GET    http://localhost:5001/api/students/1");
+Console.WriteLine("   PUT    http://localhost:5001/api/students/1");
+Console.WriteLine("   DELETE http://localhost:5001/api/students/1");
 
 app.Run();
